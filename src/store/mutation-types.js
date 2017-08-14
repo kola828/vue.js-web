@@ -1,3 +1,5 @@
+export const ARTICLE_INFO = 'ARTICLE_INFO';//文章详情
+
 export const RECORD_ADDRESS = 'RECORD_ADDRESS'
 export const ADD_CART = 'ADD_CART'
 export const REDUCE_CART = 'REDUCE_CART'

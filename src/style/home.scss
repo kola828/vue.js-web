@@ -1,0 +1,55 @@
+.contain {
+  .vux-flexbox {
+    width: 98%;
+    margin: 0 auto;
+    margin-top: 7px;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid lightgray;
+    .vux-flexbox-item {
+      background: green;
+      font-size: 0.7rem;
+      padding: 0.1rem;
+      border-radius: 4px;
+      text-align: center;
+
+      .flex-demo {
+        color: white;
+      }
+    }
+  }
+  .content-info {
+    //margin-top: 0.5rem;
+    line-height: 1.1rem;
+    border-bottom: 1px solid lightgray;
+    font-size: 0.7rem;
+    padding: 0 0.3rem;
+    .one-article{
+      .author-time{
+        font-size: 0.6rem;
+        span{
+          color: gray;
+        }
+        .time{
+          float: right;
+        }
+      }
+      .article-title{
+        .top{
+          border: 1px solid green;
+          border-radius: 3px;
+          font-size: 0.6rem;
+          color: white;
+          background: green;
+          padding: 0 3px;
+          margin-right: 10px;
+        }
+      }
+      .comment-read{
+        font-size: 0.6rem;
+        span{
+          color: gray;
+        }
+      }
+    }
+  }
+}

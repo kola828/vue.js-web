@@ -1,31 +1,18 @@
+//Action 提交的是 mutation，而不是直接变更状态。
+//Action 可以包含任意异步操作。
 import {
-	getUser,
-	getAddressList
+  articleInfo//文章详情
 } from '../service/getData'
 import {
-	GET_USERINFO,
-	SAVE_ADDRESS
+  ARTICLE_INFO//文章详情
 } from './mutation-types.js'
 
 
 
 export default {
-
-	async getUserInfo({
-		commit,
-		state
-	}) {
-		let res = await getUser();
-		commit(GET_USERINFO, res)
-	},
-	async saveAddress({
-		commit,
-		state
-	}) {
-
-		if(state.removeAddress.length > 0) return;
-
-		let addres = await getAddressList(state.userInfo.user_id);
-		commit(SAVE_ADDRESS, addres);	
+	async getArticleList({commit,state}) {
+		// console.log(commit,state);
+    let res = await articleInfo();
+    commit(ARTICLE_INFO, res)  //commit的时候执行ARTICLE_INFO
 	},
 }
