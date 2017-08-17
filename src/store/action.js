@@ -10,9 +10,10 @@ import {
 
 
 export default {
-	async getArticleList({commit,state}) {
-		// console.log(commit,state);
-    let res = await articleInfo();
-    commit(ARTICLE_INFO, res)  //commit的时候执行ARTICLE_INFO
-	},
+	// async getArticleList({commit,state}) {
+  //
+   //  let res = await articleInfo();
+  //
+   //  // commit(ARTICLE_INFO, res)  //commit的时候执行ARTICLE_INFO
+	// },
 }

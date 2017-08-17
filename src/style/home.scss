@@ -1,55 +1,82 @@
-.contain {
-  .vux-flexbox {
-    width: 98%;
-    margin: 0 auto;
-    margin-top: 7px;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid lightgray;
-    .vux-flexbox-item {
-      background: green;
-      font-size: 0.7rem;
-      padding: 0.1rem;
-      border-radius: 4px;
-      text-align: center;
+@mixin sm-button($bg,$color) {
+  border: 1px solid green;
+  border-radius: 3px;
+  font-size: 0.6rem;
+  color: $color;
+  background: $bg;
+  padding: 0 3px;
+  margin-right: 10px;
+}
 
-      .flex-demo {
-        color: white;
-      }
-    }
-  }
-  .content-info {
-    //margin-top: 0.5rem;
-    line-height: 1.1rem;
-    border-bottom: 1px solid lightgray;
-    font-size: 0.7rem;
-    padding: 0 0.3rem;
-    .one-article{
-      .author-time{
-        font-size: 0.6rem;
-        span{
-          color: gray;
-        }
-        .time{
-          float: right;
-        }
-      }
-      .article-title{
-        .top{
-          border: 1px solid green;
-          border-radius: 3px;
-          font-size: 0.6rem;
+.contain {
+  .top-head {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    .vux-flexbox {
+      width: 98%;
+      margin: 0 auto;
+      margin-top: 7px;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid lightgray;
+      .vux-flexbox-item {
+        background: green;
+        font-size: 0.7rem;
+        padding: 0.1rem;
+        border-radius: 4px;
+        text-align: center;
+
+        .flex-demo {
           color: white;
-          background: green;
-          padding: 0 3px;
-          margin-right: 10px;
-        }
-      }
-      .comment-read{
-        font-size: 0.6rem;
-        span{
-          color: gray;
         }
       }
     }
   }
+  #wrapper{
+    overflow: hidden;
+    width: 100%;
+    position: absolute;
+    top: 4.1rem;
+    left: 0;
+    right: 0;
+    bottom: 1.75rem;
+    .content-info {
+      //margin-top: 0.5rem;
+      line-height: 1.1rem;
+      border-bottom: 1px solid lightgray;
+      font-size: 0.7rem;
+      padding: 0 0.3rem;
+      .one-article {
+        .author-time {
+          font-size: 0.6rem;
+          span {
+            color: gray;
+          }
+          .time {
+            float: right;
+          }
+        }
+        .article-title {
+          .top {
+            @include sm-button(green, white);
+          }
+          .test {
+            @include sm-button(gray, white);
+            border: 1px solid gray;
+          }
+
+        }
+        .comment-read {
+          font-size: 0.6rem;
+          span {
+            color: gray;
+          }
+        }
+      }
+    }
+  }
+
+
 }

@@ -7,15 +7,13 @@ import './config/rem'
 import FastClick from 'fastclick'
 import './style/common';
 
-
-
 if ('addEventListener' in document) {
     document.addEventListener('DOMContentLoaded', function() {
         FastClick.attach(document.body);
     }, false);
 }
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 const router = new VueRouter({
 	routes,
 	mode: routerMode,
@@ -26,5 +24,5 @@ const router = new VueRouter({
 new Vue({
 	router,
 	store,
-}).$mount('#app')
+}).$mount('#app');
 
