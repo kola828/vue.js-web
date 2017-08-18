@@ -274,3 +274,44 @@ export const animate = (element, target, duration = 400, mode = 'ease-out', call
         })
     }, 20);
 }
+
+
+/**
+ * @description 获取url参数
+ * @param name {string}
+ * @method getQueryString
+ * @returns {string}
+ */
+export const getQueryString = (name) => {
+  name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+  var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+      results = regex.exec(location.search);
+  return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+};
+
+
+export const getDate = (timestamp) => {
+  timestamp = parseInt(timestamp );
+  var day = new Date(timestamp),
+      Year = 0,
+      Month = 0,
+      Day = 0,
+      CurrentDate = '';
+  // 初始化时间
+  Year = day.getFullYear();
+  Month = day.getMonth() + 1;
+  Day = day.getDate();
+  CurrentDate += Year + '-';
+  if (Month >= 10) {
+    CurrentDate += Month + '-';
+  } else {
+    CurrentDate += '0' + Month + '-';
+  }
+  if (Day >= 10) {
+    CurrentDate += Day;
+  } else {
+    CurrentDate += '0' + Day;
+  }
+  return CurrentDate;
+};
+

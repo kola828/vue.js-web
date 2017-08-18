@@ -1,0 +1,97 @@
+#app {
+  overflow-y: auto;
+  overflow-x: hidden;
+  #nav-top {
+    width: 100%;
+    height: 2rem;
+    background: #1c6132;
+    padding: 5px;
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    .head-left {
+      display: inline-block;
+      .iconfont {
+        color: white;
+      }
+      span {
+        color: white;
+        font-size: 0.8rem;
+      }
+    }
+  }
+  .container {
+    position: absolute;
+    top: 2rem;
+    padding: 10px;
+    width: 100%;
+    .con-header {
+      border-bottom: 1px solid lightgray;
+      margin-bottom: 0.8rem;
+      padding-bottom: 0.5rem;
+      .title {
+        font-size: 1rem;
+        text-align: center;
+      }
+      .author-info {
+        margin-top: 0.5rem;
+        text-align: center;
+        font-size: 0.6rem;
+        img {
+          width: 1.5rem;
+          height: 1.5rem;
+          border-radius: 1.5rem;
+          vertical-align: middle;
+        }
+      }
+    }
+
+    .info {
+      margin-bottom: 1rem;
+      img {
+        width: 100%;
+      }
+      h1, h2, h3, h4, h5, h6 {
+        font-size: 0.8rem;
+        border-bottom: 1px solid lightgray;
+        line-height: 2.5rem;
+        margin-bottom: 10px;
+      }
+      p, div, ul, li {
+        font-size: 0.7rem;
+      }
+      li ul li {
+        list-style-type: disc;
+        font-size: 0.7rem;
+        list-style-position: inside;
+
+      }
+
+    }
+    .reply-block {
+      padding: 0.5rem 0;
+      border-bottom: 1px dashed lightgray;
+      .reply-one{
+        .reply-left{
+          width:15%;
+          float: left;
+          img{
+            width: 1.5rem;
+            margin: 0 auto;
+          }
+        }
+        .reply-right{
+          width: 85%;
+          font-size: 0.7rem;
+          float: left;
+          .reply-time{
+            font-size: 0.6rem;
+          }
+        }
+        .clear{
+          clear: both;
+        }
+      }
+    }
+  }
+}

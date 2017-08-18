@@ -8,14 +8,16 @@ if (process.env.NODE_ENV == 'development') {
         method: 'GET',
         url: '/v1/topics',
         params: params
-      })
+      });
 
-  ;
-
+  var oneArtInfo = (id) => axios({
+    method: 'GET',
+    url: '/v1/topic/'+id
+  });
 
 } else {
 
 }
 
 
-export {articleInfo}
+export {articleInfo,oneArtInfo}

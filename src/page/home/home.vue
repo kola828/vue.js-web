@@ -28,26 +28,27 @@
     <div id="wrapper">
       <div class="iscroll" id="iscroll">
 
-        <div class="content-info" v-for="key in articleList" @click="">
-          <div class="one-article">
-            <div class="author-time"><span>作者：{{key.author.loginname}} </span>
-              <span class="time" v-if="key.day>0">{{key.day}}天前</span>
-              <span class="time" v-if="key.day<=0 && key.hours>0">{{key.hours}}小时前</span>
-              <span class="time" v-if="key.day<=0 && key.hours<=0 && key.minutes>0">{{key.minutes}}分钟前</span>
-              <span class="time"
-                    v-if="key.day<=0 && key.hours<=0 && key.minutes<=0 && key.seconds>0">{{key.seconds>0}}秒前</span>
+          <div class="content-info" v-for="key in articleList" @click="jumpInfo(key)">
+            <div class="one-article">
+              <div class="author-time"><span>作者：{{key.author.loginname}} </span>
+                <span class="time" v-if="key.day>0">{{key.day}}天前</span>
+                <span class="time" v-if="key.day<=0 && key.hours>0">{{key.hours}}小时前</span>
+                <span class="time" v-if="key.day<=0 && key.hours<=0 && key.minutes>0">{{key.minutes}}分钟前</span>
+                <span class="time"
+                      v-if="key.day<=0 && key.hours<=0 && key.minutes<=0 && key.seconds>0">{{key.seconds>0}}秒前</span>
+              </div>
+              <div class="article-title">
+                <span class="top" v-if="key.top===true">置顶</span>
+                <span class="test" v-if="key.tab==='share' && key.top===false && key.good===false">分享</span>
+                <span class="test" v-if="key.good===true && key.top===false">精华</span>
+                <span class="test" v-if="key.tab==='weex'&&key.top===false && key.good===false">weex</span>
+                <span class="test" v-if="key.tab==='ask'&&key.top===false && key.good===false">问答</span>
+                <span class="test" v-if="key.tab==='job'&&key.top===false && key.good===false">招聘</span>
+                <span>{{key.title}}</span></div>
+              <div class="comment-read"><span>评论数：{{key.reply_count}} 阅读数：{{key.visit_count}}</span></div>
             </div>
-            <div class="article-title">
-              <span class="top" v-if="key.top===true">置顶</span>
-              <span class="test" v-if="key.tab==='share' && key.top===false && key.good===false">分享</span>
-              <span class="test" v-if="key.good===true && key.top===false">精华</span>
-              <span class="test" v-if="key.tab==='weex'&&key.top===false && key.good===false">weex</span>
-              <span class="test" v-if="key.tab==='ask'&&key.top===false && key.good===false">问答</span>
-              <span class="test" v-if="key.tab==='job'&&key.top===false && key.good===false">招聘</span>
-              <span>{{key.title}}</span></div>
-            <div class="comment-read"><span>评论数：{{key.reply_count}} 阅读数：{{key.visit_count}}</span></div>
           </div>
-        </div>
+
       </div>
     </div>
 
@@ -61,6 +62,7 @@
   import footNav from '../../components/footer/foot.vue'
   import {mapState, mapActions} from 'vuex'
   import {articleInfo} from '../../service/getData'
+  import {setStore} from '../../config/mUtils.js'
   import IScroll from 'iscroll'
 
   export default {
@@ -138,7 +140,6 @@
        */
       getArticleList(name) {
         var self = this;
-        console.log(name);
         if (name !== '') {
           self.tab = name;
         }
@@ -187,6 +188,17 @@
         var self = this;
         self.myScroll.scrollTo(0, 0);
         self.getArticleList(name)
+      },
+      /**
+       *
+       */
+      jumpInfo(info) {
+        var self = this;
+        setStore('artId',info.id);
+        self.$router.push({ path: '/artInfo'})
+//        console.log(self.$router);
+//        self.$router.push({ path: '/artInfo', query: { artInfoId: info.id }})
+
       }
     },
     watch: {
