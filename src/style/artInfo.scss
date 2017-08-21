@@ -19,6 +19,13 @@
         font-size: 0.8rem;
       }
     }
+    .head-right{
+      margin-left: 2rem;
+      display: inline-block;
+      .iconfont {
+        color: white;
+      }
+    }
   }
   .container {
     position: absolute;
@@ -68,6 +75,20 @@
       }
 
     }
+    .reply-area{
+      font-size: 1rem;
+      font-weight: bold;
+      display: inline-block;
+    }
+    .reply-btn{
+      display: inline-block;
+      margin-left: 10px;
+      background: green;
+      color: white;
+      border-radius: 3px;
+      padding: 0 5px;
+
+    }
     .reply-block {
       padding: 0.5rem 0;
       border-bottom: 1px dashed lightgray;
@@ -86,12 +107,30 @@
           float: left;
           .reply-time{
             font-size: 0.6rem;
+            .answer{
+              float: right;
+              color: green;
+            }
           }
         }
         .clear{
           clear: both;
         }
       }
+    }
+    .fabu-reply{
+      border: 1px solid lightgrey;
+      margin-top: 1rem;
+      font-size: 0.7rem;
+      border-radius: 3px;
+    }
+    .release-btn{
+      width: 3.5rem;
+      height: 1.5rem;
+      background: green;
+      color: white;
+      margin-top: 1rem;
+      border-radius: 3px;
     }
   }
 }

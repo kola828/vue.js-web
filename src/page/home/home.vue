@@ -35,7 +35,7 @@
                 <span class="time" v-if="key.day<=0 && key.hours>0">{{key.hours}}小时前</span>
                 <span class="time" v-if="key.day<=0 && key.hours<=0 && key.minutes>0">{{key.minutes}}分钟前</span>
                 <span class="time"
-                      v-if="key.day<=0 && key.hours<=0 && key.minutes<=0 && key.seconds>0">{{key.seconds>0}}秒前</span>
+                      v-if="key.day<=0 && key.hours<=0 && key.minutes<=0 && key.seconds>0">{{key.seconds}}秒前</span>
               </div>
               <div class="article-title">
                 <span class="top" v-if="key.top===true">置顶</span>
@@ -151,7 +151,7 @@
             }
         ).then(function (response) {
 
-
+          //可整理成公共方法
           response.data.data.map(function (item) {
             var nowTime = new Date().toISOString();
             var time = new Date(nowTime) - new Date(item.last_reply_at);

@@ -2,6 +2,9 @@ import App from '../App'
 
 const home = r => require.ensure([], () => r(require('../page/home/home')), 'home');
 const artInfo = r => require.ensure([], () => r(require('../page/artInfo/artInfo')), 'artInfo');
+const editArt = r => require.ensure([], () => r(require('../page/editArt/editArt')), 'editArt');
+
+
 
 export default [{
   path: '/',
@@ -21,6 +24,11 @@ export default [{
     {
       path: '/artInfo',
       component: artInfo
+    },
+    //新建文章
+    {
+      path: '/editArt',
+      component: editArt
     },
   ]
 }]
