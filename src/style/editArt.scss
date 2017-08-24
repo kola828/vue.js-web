@@ -32,5 +32,39 @@
     top: 2rem;
     padding: 10px;
     width: 100%;
+    font-size: 0.7rem;
+    .vux-flexbox {
+      margin: 0 auto;
+      margin-top: 7px;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid lightgray;
+      .vux-flexbox-item {
+        .flex-demo {
+          color: white;
+          background: #c9c9c9;
+          font-size: 0.7rem;
+          padding: 0.2rem 0.1rem;
+          border-radius: 4px;
+          text-align: center;
+        }
+        .active{
+          background: green;
+        }
+      }
+    }
+    textarea{
+      font-size: 0.7rem;
+    }
+    .submit{
+      margin: 1rem 0;
+      width: 100%;
+      background: green;
+      color: white;
+      height: 2rem;
+      font-size: 0.8rem;
+      line-height: 2rem;
+      text-align: center;
+      border-radius: 4px;
+    }
   }
 }

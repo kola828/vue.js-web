@@ -3,7 +3,11 @@ import App from '../App'
 const home = r => require.ensure([], () => r(require('../page/home/home')), 'home');
 const artInfo = r => require.ensure([], () => r(require('../page/artInfo/artInfo')), 'artInfo');
 const editArt = r => require.ensure([], () => r(require('../page/editArt/editArt')), 'editArt');
-
+const useCenter = r => require.ensure([], () => r(require('../page/useCenter/useCenter')), 'useCenter');
+const aboutMeArt = r => require.ensure([], () => r(require('../page/useCenter/aboutMeArt')), 'aboutMeArt');
+const joinArt = r => require.ensure([], () => r(require('../page/useCenter/joinArt')), 'joinArt');
+const myCollect = r => require.ensure([], () => r(require('../page/useCenter/myCollect')), 'myCollect');
+const myNew = r => require.ensure([], () => r(require('../page/useCenter/myNew')), 'myNew');
 
 
 export default [{
@@ -30,5 +34,28 @@ export default [{
       path: '/editArt',
       component: editArt
     },
+    //个人中心
+    {
+      path: 'useCenter',
+      component: useCenter,
+    },
+    {
+      path: 'aboutMeArt',
+      component: aboutMeArt
+    },
+    {
+      path: 'joinArt',
+      component: joinArt
+    },
+    {
+      path: 'myCollect',
+      component: myCollect
+    },
+    {
+      path: 'myNew',
+      component: myNew
+    }
+
+
   ]
 }]

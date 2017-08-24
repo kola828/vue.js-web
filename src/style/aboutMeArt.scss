@@ -1,0 +1,61 @@
+#app {
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  #nav-top {
+    width: 100%;
+    height: 2rem;
+    background: #1c6132;
+    padding: 5px;
+    position: fixed;
+    top: 0;
+    z-index: 999;
+
+    .head-left {
+      display: inline-block;
+
+      .iconfont {
+        color: white;
+      }
+
+      span {
+        color: white;
+        font-size: 0.8rem;
+      }
+
+    }
+    .head-right {
+      margin-left: 2rem;
+      display: inline-block;
+
+      .iconfont {
+        color: white;
+      }
+
+    }
+  }
+  .main-list {
+    position: absolute;
+    top: 2rem;
+    width: 100%;
+    font-size: 0.8rem;
+    ul{
+      li{
+        display:block;
+        white-space:nowrap;
+        overflow:hidden;
+        text-overflow:ellipsis;
+        height:2rem;
+        line-height: 2rem;
+        padding:0 5px;
+        border-bottom: 1px lightgray solid;
+
+      }
+      li:nth-child(even)
+      {
+        background: #d8eee8;
+      }
+
+    }
+  }
+}

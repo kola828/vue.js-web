@@ -1,0 +1,54 @@
+#app {
+  .container-big {
+    .user-info {
+      height: 9rem;
+      overflow: hidden;
+      position: relative;
+      .bg-img {
+        height: 100%;
+        width: 100%;
+        filter: blur(30px);
+        -webkit-filter: blur(30px);
+        -ms-filter: blur(30px);
+        -moz-filter: blur(30px);
+        filter: progid:DXImageTransform.Microsoft.Blur(pixelRadius=30, MakeShadow=false);
+      }
+      .head-img {
+        width: 4rem;
+        height: 4rem;
+        border-radius: 4rem;
+        border: 2px solid white;
+        position: absolute;
+        top: 1.5rem;
+        left: 6rem;
+        img {
+          border-radius: 4rem;
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .name{
+        width: 100%;
+        position: absolute;
+        bottom: 1rem;
+        p{
+          text-align: center;
+          display: inherit;
+          font-size: 0.8rem;
+        }
+        .score{
+          font-size: 0.6rem;
+        }
+      }
+    }
+    .weui-cells{
+      font-size: 0.8rem;
+    }
+    .my-list+.my-list{
+      .weui-cell{
+        border-top: 1px solid #eeeeee;
+      }
+
+    }
+  }
+}

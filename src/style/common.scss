@@ -8,14 +8,15 @@
   url('//at.alicdn.com/t/font_382579_xdlqa789hmukrzfr.ttf') format('truetype'),
   url('//at.alicdn.com/t/font_382579_xdlqa789hmukrzfr.svg#iconfont') format('svg');
 }
-.iconfont{
-  font-family:"iconfont" !important;
-  font-size:16px;font-style:normal;
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
   -webkit-font-smoothing: antialiased;
   -webkit-text-stroke-width: 0.2px;
   -moz-osx-font-smoothing: grayscale;
 }
-
 
 html, body, #app {
   height: 100%;
@@ -46,13 +47,13 @@ html, body, #app {
     margin-left: 10px;
     position: relative;
     display: inline-block;
-    input{
+    input {
       width: 100%;
       height: 1.3rem;
       border: 1px solid gray;
       border-radius: 6px;
     }
-    .select{
+    .select {
       position: absolute;
       right: 2px;
       top: 0;
@@ -61,13 +62,13 @@ html, body, #app {
   }
 }
 
-.foot{
+.foot {
   position: absolute;
   width: 100%;
   left: 0;
   right: 0;
   bottom: 0;
-  .foot-one{
+  .foot-one {
     display: inline-block;
     width: 50%;
     box-sizing: border-box;
@@ -79,10 +80,12 @@ html, body, #app {
     background: green;
     color: white;
   }
-  .foot-add+.foot-one{
-    border-left: 1px solid white;
+  .tiezi {
+    .foot-one{
+      border-right: 1px solid white;
+    }
   }
-  .foot-add{
+  .foot-add {
     display: inline-block;
     position: absolute;
     background: lightgray;
@@ -93,7 +96,7 @@ html, body, #app {
     line-height: 2rem;
     bottom: 0.5rem;
     left: 44%;
-    .add{
+    .add {
       font-size: 1.3rem;
     }
   }
