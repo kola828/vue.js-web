@@ -49,6 +49,8 @@ if (process.env.NODE_ENV == 'development') {
     url: '/v1/user/' + name
   });
 
+
+  // 收藏主题
   var test = () =>axios({
     method: 'POST',
     url: '/v1/topic/collect',

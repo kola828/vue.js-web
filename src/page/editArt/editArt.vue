@@ -42,7 +42,8 @@
 
 <script>
   import {XTextarea, Group, XInput, Flexbox, FlexboxItem, Alert} from 'vux'
-  import {token, addNewArt} from "../../service/getData";
+  import {token} from "../../service/getData";
+  import {mapState, mapActions, mapMutations} from 'vuex'
 
   export default {
     data() {
@@ -57,9 +58,14 @@
 
     },
     methods: {
+      ...mapActions([
+        'addNewArt',
+      ]),
+      ...mapMutations([
+        'ADD_ART_PARAM'
+      ]),
       submit() {
         let self = this;
-
         if (self.tab === '') {
           self.$vux.alert.show({
             title: '提示',
@@ -82,7 +88,12 @@
             tab: self.tab,
             content: self.content
           };
-          addNewArt(params)
+
+          self.ADD_ART_PARAM({
+            params:params
+          });
+
+          self.addNewArt()
               .then((response) => {
                 self.$router.push({path: '/home'})
               })

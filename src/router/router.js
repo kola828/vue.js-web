@@ -9,6 +9,7 @@ const joinArt = r => require.ensure([], () => r(require('../page/useCenter/joinA
 const myCollect = r => require.ensure([], () => r(require('../page/useCenter/myCollect')), 'myCollect');
 const myNew = r => require.ensure([], () => r(require('../page/useCenter/myNew')), 'myNew');
 
+const login = r => require.ensure([], () => r(require('../page/login/login')), 'login');
 
 export default [{
   path: '/',
@@ -17,7 +18,7 @@ export default [{
     //地址为空时跳转home页面
     {
       path: '',
-      redirect: '/home'
+      redirect: '/login'
     },
     //首页
     {
@@ -33,6 +34,11 @@ export default [{
     {
       path: '/editArt',
       component: editArt
+    },
+      //登录
+    {
+      path: '/login',
+      component: login
     },
     //个人中心
     {

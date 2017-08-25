@@ -28,7 +28,7 @@
     <div id="wrapper">
       <div class="iscroll" id="iscroll">
 
-        <div class="content-info" v-for="key in articleList" @click="jumpInfo(key)">
+        <div class="content-info" v-for="key in allArtList" @click="jumpInfo(key)">
           <div class="one-article">
             <div class="author-time"><span>作者：{{key.author.loginname}} </span>
               <span class="time" v-if="key.day>0">{{key.day}}天前</span>
@@ -60,8 +60,9 @@
   import {Group, Cell, Flexbox, FlexboxItem} from 'vux'
   import HeadNav from '../../components/header/head.vue'
   import footNav from '../../components/footer/foot.vue'
-  import {mapState, mapActions} from 'vuex'
-  import {articleInfo} from '../../service/getData'
+  import {mapState, mapActions, mapMutations} from 'vuex'
+
+  //  import {articleInfo} from '../../service/getData'
   import {setStore} from '../../config/mUtils.js'
   import IScroll from 'iscroll'
 
@@ -72,13 +73,19 @@
         tab: 'all', //tab 类型
         limit: 10, // 每页调数
         page: 1, //当前页数
-        articleList: [],//文章列表
+//        articleList: [],//文章列表
         myScroll: {},
       }
     },
-    computed: {},
+    computed: {
+      ...mapState([
+        'allArtList',
+        'newArtParam',
+      ]),
+    },
     mounted() {
       this.getArticleList('all');
+
       this.initIscroll();
       document.querySelector('#wrapper').addEventListener('touchmove', function (e) {
         e.preventDefault();
@@ -87,6 +94,13 @@
 
     },
     methods: {
+      ...mapActions([
+        'articleInfo',
+      ]),
+      ...mapMutations([
+        'ART_LIST_PARAM'
+      ]),
+
       /**
        * methods initIscroll
        * describe 初始化iscroll
@@ -106,12 +120,9 @@
         self.myScroll.on("scrollEnd", () => {
           let maxY = Math.abs(self.myScroll.maxScrollY);
           let posY = Math.abs(self.myScroll.y);
-
           if (posY >= maxY) {
-
-            if (self.articleList.length >= self.limit) {
+            if (self.allArtList.length >= self.limit) {
               self.limit = self.limit + 10;
-
               if (self.tab === 'all') {
                 self.getArticleList('all');
               } else if (self.tab === 'good') {
@@ -125,8 +136,6 @@
               } else if (self.tab === 'job') {
                 self.getArticleList('job');
               }
-
-
               setTimeout(() => {
                 self.myScroll.refresh()
               }, 100);
@@ -139,45 +148,21 @@
        * describe 获取文章列表数据
        */
       getArticleList(name) {
+
         let self = this;
-        if (name !== '') {
+        if (name !== '' ) {
           self.tab = name;
+        } else {
+          self.tab = 'all'
         }
-        articleInfo(
-            {
-              tab: self.tab,
-              limit: self.limit,
-              page: self.page
-            }
-        ).then((response) => {
 
-          //可整理成公共方法
-          response.data.data.map((item) => {
-            let nowTime = new Date().toISOString();
-            let time = new Date(nowTime) - new Date(item.last_reply_at);
-            //计算出相差天数
-            let days = Math.floor(time / (24 * 3600 * 1000));
-            //计算出小时数
-            let leave1 = time % (24 * 3600 * 1000);  //计算天数后剩余的毫秒数
-            let hours = Math.floor(leave1 / (3600 * 1000));
-            //计算相差分钟数
-            let leave2 = leave1 % (3600 * 1000);     //计算小时数后剩余的毫秒数
-            let minutes = Math.floor(leave2 / (60 * 1000));
-            //计算相差秒数
-            let leave3 = leave2 % (60 * 1000);    //计算分钟数后剩余的毫秒数
-            let seconds = Math.round(leave3 / 1000);
-            item.day = days;
-            item.hours = hours;
-            item.minutes = minutes;
-            item.seconds = seconds;
-            return item;
-          });
-          self.articleList = response.data.data;
-        })
-            .catch((error) => {
-              console.log(error);
-            })
+        self.ART_LIST_PARAM({
+          tab: self.tab,
+          limit: self.limit,
+          page: self.page
+        });
 
+        self.articleInfo()
       },
       /**
        * methods chooseTabs
@@ -187,6 +172,7 @@
       chooseTabs(name) {
         let self = this;
         self.myScroll.scrollTo(0, 0);
+        self.limit=10;
         self.getArticleList(name)
       },
       /**
@@ -196,8 +182,6 @@
         let self = this;
         setStore('artId', info.id);
         self.$router.push({path: '/artInfo'})
-//        console.log(self.$router);
-//        self.$router.push({ path: '/artInfo', query: { artInfoId: info.id }})
       }
     },
     watch: {
@@ -205,7 +189,7 @@
        * methods articleList
        * describe 监听文章列表
        */
-      articleList() {
+      allArtList() {
         let self = this;
         setTimeout(function () {
           self.myScroll.refresh();
