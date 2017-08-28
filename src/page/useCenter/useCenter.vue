@@ -46,7 +46,7 @@
 
     <div>
       <confirm v-model="show"
-               :title="提示"
+               title="提示"
                @on-confirm="logout"
       >
         <p style="text-align:center;">您确认要退出吗？</p>

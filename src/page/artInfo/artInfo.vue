@@ -7,9 +7,15 @@
         <span>返回</span>
       </div>
 
+      <div class="head-right">
+        <!--未收藏-->
+        <span><i class="iconfont" @click="addCollect">&#xe636;</i></span>
+        <!--收藏-->
+        <span><i class="iconfont" v-if="collect==true">&#xe60f;</i></span>
+      </div>
+
+
     </header>
-
-
     <div class="container">
       <div class="con-header">
         <div class="title">{{oneArtInfo.artTitle}}</div>
@@ -41,15 +47,11 @@
           <div class="clear"></div>
         </div>
       </div>
-
       <div class="fabu-reply" v-if="token!==''">
         <x-textarea :max="200" placeholder="评论..." v-model="replyContent"></x-textarea>
       </div>
       <button class="release-btn" v-if="token!==''" @click="submit">发 布</button>
-
     </div>
-
-
   </div>
 </template>
 
@@ -74,20 +76,30 @@
         'oneArtRep',
         'oneArtAuthor',
         'oneArtId',
-        'params'
+        'params',
+        'collect'
       ]),
     },
     mounted() {
-      this.getOneArtInfo()
+      this.getOneArtInfo();
+      this.TOKEN({
+        token: getStore('token')
+      });
+      this.collectArt()
     },
     methods: {
       ...mapActions([
         'getOneArtInfo',
-        'addNewReplies'
+        'addNewReplies',
+        'collectArt'
       ]),
       ...mapMutations([
-        'REPLIY_PARAMS'
+        'REPLIY_PARAMS',
+        'TOKEN'
       ]),
+      addCollect(){
+
+      },
       /**
        *  methods submit
        *  describe 提交回复

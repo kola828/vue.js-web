@@ -11,7 +11,8 @@ import {
   ART_LIST_PARAM,
   NAME,
   TOKEN,
-  MSG_LIST
+  MSG_LIST,
+  COLLECT
 } from './mutation-types.js'
 
 import {
@@ -111,5 +112,9 @@ export default {
   [MSG_LIST](state,data){
     state.msgList=data.data.data;
     // console.log(data.data.data)
+  },
+  //是否收藏
+  [COLLECT](state,data){
+    state.collect=data.success
   }
 }

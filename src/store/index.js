@@ -24,7 +24,8 @@ const state = {
   newArtParam:[],//新增文章的内容
   allArtList:[],//所有的文章数据
   listParam:{},
-  msgList:{}
+  msgList:{},//消息列表
+  collect:false//是否收藏
 };
 
 

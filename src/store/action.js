@@ -7,14 +7,16 @@ import {
   addNewArt,
   articleInfo,
   checkToken,
-  getMessages
+  getMessages,
+  collectArt
 } from '../service/getData'
 
 import {
   USER_INFO,
   ONE_ART_INFO,
   ART_LIST,
-  MSG_LIST
+  MSG_LIST,
+  COLLECT
 } from './mutation-types.js'
 
 import {getStore, getDate} from '../config/mUtils'
@@ -106,6 +108,19 @@ export default {
     await getMessages({accesstoken:state.token})
         .then((response) => {
           commit(MSG_LIST, response);
+        })
+        .catch((error) => {
+          console.log(error)
+        });
+  },
+
+  async collectArt({commit, state}) {
+    await collectArt({
+      accesstoken:state.token,
+      topic_id:getStore('artId')
+    })
+        .then((response) => {
+          commit(COLLECT, response.data.data);
         })
         .catch((error) => {
           console.log(error)

@@ -7,3 +7,4 @@ export const ADD_ART_PARAM = 'ADD_ART_PARAM';
 export const ART_LIST = 'ART_LIST';
 export const ART_LIST_PARAM = 'ART_LIST_PARAM';
 export const MSG_LIST = 'MSG_LIST';
+export const COLLECT='COLLECT';
