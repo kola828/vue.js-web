@@ -6,9 +6,10 @@ import {routerMode} from './config/env'
 import './config/rem'
 import FastClick from 'fastclick'
 import './style/common';
-import  { AlertPlugin } from 'vux'
-Vue.use(AlertPlugin);
+import  { AlertPlugin,ConfirmPlugin} from 'vux'
 
+Vue.use(AlertPlugin);
+Vue.use(ConfirmPlugin);
 
 if ('addEventListener' in document) {
     document.addEventListener('DOMContentLoaded', function() {

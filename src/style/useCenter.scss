@@ -50,5 +50,17 @@
       }
 
     }
+
+    .logout-btn{
+      width: 90%;
+      margin: 2rem auto 0;
+      height: 1.5rem;
+      line-height: 1.5rem;
+      font-size: 0.8rem;
+      color: white;
+      text-align: center;
+      background: green;
+      border-radius: 4px;
+    }
   }
 }

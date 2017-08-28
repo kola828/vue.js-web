@@ -39,6 +39,18 @@
           </cell>
         </router-link>
       </group>
+
+      <div class="logout-btn" @click="show=true">注 销</div>
+    </div>
+
+
+    <div>
+      <confirm v-model="show"
+               :title="提示"
+               @on-confirm="logout"
+      >
+        <p style="text-align:center;">您确认要退出吗？</p>
+      </confirm>
     </div>
 
     <foot-nav></foot-nav>
@@ -48,15 +60,16 @@
 
 <script>
   import footNav from '../../components/footer/foot.vue'
-  import {Badge, Group, Cell} from 'vux'
+  import {Badge, Group, Cell, Confirm} from 'vux'
   import {mapState, mapActions, mapMutations} from 'vuex'
-  import {getStore} from '../../config/mUtils'
+  import {getStore, removeStore} from '../../config/mUtils'
   import {getMsgCount} from '../../service/getData'
 
   export default {
     data() {
       return {
-        msg: ''
+        msg: '',
+        show: false
       }
     },
     computed: {
@@ -65,7 +78,6 @@
         'user',
         'token'
       ]),
-
     },
     mounted() {
       this.NAME({
@@ -76,7 +88,6 @@
       });
       this.getUser();
       this.getLength();
-
     },
 
     methods: {
@@ -91,13 +102,19 @@
         let self = this;
         getMsgCount({accesstoken: getStore('token')})
             .then(function (response) {
-              console.log(response);
               self.msg = response.data.data
             });
+      },
+      logout() {
+        let self = this;
+        self.show = false;
+        self.$router.push({path: '/login'});
+        removeStore('name');
+        removeStore('token');
       }
     },
     components: {
-      footNav, Badge, Group, Cell
+      footNav, Badge, Group, Cell, Confirm
     },
   }
 </script>
