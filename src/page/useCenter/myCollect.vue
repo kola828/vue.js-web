@@ -7,25 +7,25 @@
                         <span>返回</span>
                   </div>
             </header>
-
-            <div class="main-list">
-                  <ul>
-                        <li v-for="key in collect_topics" @click="jumpInfo(key)">{{key.title}}</li>
-                  </ul>
-            </div>
-
+            <group class="main-list">
+                  <cell @click.native='jumpInfo(key)' v-for="key in collect_topics" :title="key.title" is-link></cell>
+            </group>
       </div>
 
 </template>
 
 <script>
 
-  import {mapState, mapActions} from 'vuex'
-  import {setStore} from '../../config/mUtils.js'
+  import {Group, Cell} from 'vux'
+  import {mapState, mapActions,mapMutations} from 'vuex'
+  import {setStore,getStore} from '../../config/mUtils.js'
 
   export default {
     data() {
       return {}
+    },
+    components: {
+       Group, Cell
     },
     computed: {
       ...mapState([
@@ -34,12 +34,18 @@
 
     },
     mounted() {
+      this.NAME({
+        name: getStore('name')
+      });
       this.getUser();
     },
 
     methods: {
       ...mapActions([
         'getUser',
+      ]),
+      ...mapMutations([
+        'NAME',
       ]),
       jumpInfo(info) {
         let self = this;

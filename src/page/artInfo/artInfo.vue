@@ -63,7 +63,7 @@
   export default {
     data() {
       return {
-        token: token,
+        token: getStore('token'),
         replyContent: '',
         replyId: '',
       }

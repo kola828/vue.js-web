@@ -34,7 +34,7 @@
         <router-link to="myNew" class="my-list">
           <cell title="我的消息" is-link>
             <div class="badge-value" slot="value">
-              <badge text="10"></badge>
+              <badge :text="msg" v-if="msg>0"></badge>
             </div>
           </cell>
         </router-link>
@@ -48,29 +48,53 @@
 
 <script>
   import footNav from '../../components/footer/foot.vue'
-  //  import {getUser} from '../../service/getData.js'
   import {Badge, Group, Cell} from 'vux'
-  import {mapState, mapActions} from 'vuex'
+  import {mapState, mapActions, mapMutations} from 'vuex'
+  import {getStore} from '../../config/mUtils'
+  import {getMsgCount} from '../../service/getData'
 
   export default {
     data() {
-      return {}
+      return {
+        msg: ''
+      }
     },
     computed: {
       ...mapState([
         'userInfo',
-        'user'
+        'user',
+        'token'
       ]),
 
     },
     mounted() {
+      this.NAME({
+        name: getStore('name')
+      });
+      this.TOKEN({
+        token: getStore('token')
+      });
       this.getUser();
+      this.getLength();
+
     },
 
     methods: {
       ...mapActions([
         'getUser',
       ]),
+      ...mapMutations([
+        'NAME',
+        'TOKEN'
+      ]),
+      getLength() {
+        let self = this;
+        getMsgCount({accesstoken: getStore('token')})
+            .then(function (response) {
+              console.log(response);
+              self.msg = response.data.data
+            });
+      }
     },
     components: {
       footNav, Badge, Group, Cell

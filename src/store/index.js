@@ -7,6 +7,10 @@ import getters from './getters'
 Vue.use(Vuex);
 
 const state = {
+  name:'',//用户名
+  // caf05f06-5069-4192-9a6c-2a30c39af01f
+  token:'',//accessToken
+
   userInfo:{},//个人信息详情
   user:{},//头像，积分姓名等
   recent_replies:[],//最近回复
@@ -19,7 +23,8 @@ const state = {
   params:[],//回复时提交的内容
   newArtParam:[],//新增文章的内容
   allArtList:[],//所有的文章数据
-  listParam:{}
+  listParam:{},
+  msgList:{}
 };
 
 

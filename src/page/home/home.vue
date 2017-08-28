@@ -61,8 +61,6 @@
   import HeadNav from '../../components/header/head.vue'
   import footNav from '../../components/footer/foot.vue'
   import {mapState, mapActions, mapMutations} from 'vuex'
-
-  //  import {articleInfo} from '../../service/getData'
   import {setStore} from '../../config/mUtils.js'
   import IScroll from 'iscroll'
 
@@ -73,7 +71,6 @@
         tab: 'all', //tab 类型
         limit: 10, // 每页调数
         page: 1, //当前页数
-//        articleList: [],//文章列表
         myScroll: {},
       }
     },

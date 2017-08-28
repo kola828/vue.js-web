@@ -42,8 +42,10 @@
 
 <script>
   import {XTextarea, Group, XInput, Flexbox, FlexboxItem, Alert} from 'vux'
-  import {token} from "../../service/getData";
+//  import {token} from "../../service/getData";
   import {mapState, mapActions, mapMutations} from 'vuex'
+
+  import {getStore} from '../../config/mUtils'
 
   export default {
     data() {
@@ -51,7 +53,7 @@
         tab: '',
         title: '',
         content: '',
-        token: token
+        token:getStore('token')
       }
     },
     mounted() {

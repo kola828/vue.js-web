@@ -4,7 +4,20 @@ import axios from 'axios';
 //编译环境使用真实数据
 if (process.env.NODE_ENV == 'development') {
 
-  var token = 'caf05f06-5069-4192-9a6c-2a30c39af01f';
+  // var token = 'caf05f06-5069-4192-9a6c-2a30c39af01f';
+
+  // 用户详情
+  var getUser = (name) =>axios({
+    method: 'GET',
+    url: '/v1/user/' + name
+  });
+
+  //匹配token
+  var checkToken = (data) => axios({
+    method: 'POST',
+    url: '/v1/accesstoken',
+    data: data
+  });
 
   /**
    * methods articleInfo
@@ -44,28 +57,34 @@ if (process.env.NODE_ENV == 'development') {
     data: data
   });
 
-  var getUser = (name) =>axios({
+  /**
+   * 获取未读消息的条数
+   * @param params
+   */
+  var getMsgCount=(params)=>axios({
     method: 'GET',
-    url: '/v1/user/' + name
+    url: '/v1/message/count',
+    params:params
   });
+
+  // 获取已读和未读消息
+  var getMessages = (params) =>axios({
+    method: 'GET',
+    url: '/v1/messages',
+    params:params
+  })
 
 
   // 收藏主题
-  var test = () =>axios({
-    method: 'POST',
-    url: '/v1/topic/collect',
-    data: {
-      accesstoken:token,
-      topic_id:'5987f2d4924ce0e86b968686'
-    }
-  });
+  // var test = () =>axios({
+  //   method: 'POST',
+  //   url: '/v1/topic/collect',
+  //   data: {
+  //     accesstoken:token,
+  //     topic_id:'5987f2d4924ce0e86b968686'
+  //   }
+  // });
 
-  // post /topic/collect 收藏主题
-  //
-  // 接收 post 参数
-  //
-  // accesstoken String 用户的 accessToken
-  // topic_id String 被收藏的主题id
 
 
 } else {
@@ -73,4 +92,4 @@ if (process.env.NODE_ENV == 'development') {
 }
 
 
-export {articleInfo, oneArtInfo, token, addNewReplies,addNewArt,getUser,test}
+export {articleInfo, oneArtInfo, addNewReplies,addNewArt,getUser,checkToken,getMsgCount,getMessages}

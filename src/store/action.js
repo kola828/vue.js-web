@@ -6,11 +6,15 @@ import {
   addNewReplies,
   addNewArt,
   articleInfo,
+  checkToken,
+  getMessages
 } from '../service/getData'
+
 import {
   USER_INFO,
   ONE_ART_INFO,
-  ART_LIST
+  ART_LIST,
+  MSG_LIST
 } from './mutation-types.js'
 
 import {getStore, getDate} from '../config/mUtils'
@@ -23,9 +27,22 @@ export default {
    * @returns {Promise.<void>}
    */
   async getUser({commit, state}) {
-    await getUser('kola828')
+    await getUser(state.name)
         .then((response) => {
           commit(USER_INFO, response);//commit的时候执行ARTICLE_INFO
+        });
+  },
+  /**
+   * 验证token
+   * @param commit
+   * @param state
+   * @returns {Promise.<void>}
+   */
+  async checkToken({commit, state}) {
+    await checkToken(state.token)
+        .then((response) => {
+          console.log(response)
+          // commit(USER_INFO, response);//commit的时候执行ARTICLE_INFO
         });
   },
 
@@ -63,18 +80,36 @@ export default {
     await addNewArt(params)
   },
 
-  // articleInfo
-
+  /**
+   * 获取文章列表
+   * @param commit
+   * @param state
+   * @returns {Promise.<void>}
+   */
   async articleInfo({commit, state}) {
     let params = state.listParam;
     await articleInfo(params)
         .then((response) => {
-          commit(ART_LIST, response);//commit的时候执行ARTICLE_INFO
+          commit(ART_LIST, response);
         })
         .catch((error) => {
           console.log(error)
+        });
+  },
+  /**
+   * 获取消息列表
+   * @param commit
+   * @param state
+   * @returns {Promise.<void>}
+   */
+  async getMessages({commit, state}) {
+    await getMessages({accesstoken:state.token})
+        .then((response) => {
+          commit(MSG_LIST, response);
         })
-    ;
+        .catch((error) => {
+          console.log(error)
+        });
   },
 
 }

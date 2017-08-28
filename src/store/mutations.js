@@ -8,15 +8,24 @@ import {
   REPLIY_PARAMS,
   ADD_ART_PARAM,
   ART_LIST,
-  ART_LIST_PARAM
+  ART_LIST_PARAM,
+  NAME,
+  TOKEN,
+  MSG_LIST
 } from './mutation-types.js'
 
 import {
   getDate,
-  getStore,
 } from '../config/mUtils'
 
 export default {
+
+  [NAME](state, info){
+    state.name=info.name
+  },
+  [TOKEN](state, info){
+    state.token=info.token
+  },
   //个人信息页面数据的整理
   [USER_INFO](state, info) {
     state.userInfo = info.data.data;
@@ -28,12 +37,9 @@ export default {
     state.recent_replies = info.data.data.recent_replies;
     state.recent_topics = info.data.data.recent_topics;
     state.collect_topics = info.data.data.collect_topics
-
   },
-//单篇文章详情页面数据的整理
+  //单篇文章详情页面数据的整理
   [ONE_ART_INFO](state, info) {
-    // console.log(info.data.data);
-
     state.oneArtInfo = {
       article: info.data.data.content,
       artTitle: info.data.data.title,
@@ -64,24 +70,21 @@ export default {
 
 
   },
-//回复评论
+  //回复评论
   [REPLIY_PARAMS](state, data) {
     state.oneArtId = data.id;
     state.params = data.params
   },
   //新增文章
   [ADD_ART_PARAM](state, data) {
-
     state.newArtParam = data.params
   },
-
+  //获取文章列表的params
   [ART_LIST_PARAM](state, data) {
-
     state.listParam = data
   },
   //首页
   [ART_LIST](state, data) {
-
     data.data.data.map((item) => {
       let nowTime = new Date().toISOString();
       let time = new Date(nowTime) - new Date(item.last_reply_at);
@@ -102,10 +105,11 @@ export default {
       item.seconds = seconds;
       return item;
     });
-
     state.allArtList = data.data.data;
-
-    console.log(state.allArtList)
-
+  },
+  //消息列表
+  [MSG_LIST](state,data){
+    state.msgList=data.data.data;
+    // console.log(data.data.data)
   }
 }
