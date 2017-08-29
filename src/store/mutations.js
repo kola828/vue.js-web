@@ -114,7 +114,7 @@ export default {
     // console.log(data.data.data)
   },
   //是否收藏
-  [COLLECT](state,data){
-    state.collect=data.success
-  }
+  // [COLLECT](state,data){
+  //   state.collect=data.success
+  // }
 }

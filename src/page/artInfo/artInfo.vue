@@ -7,12 +7,12 @@
         <span>返回</span>
       </div>
 
-      <div class="head-right">
-        <!--未收藏-->
-        <span><i class="iconfont" @click="addCollect">&#xe636;</i></span>
-        <!--收藏-->
-        <span><i class="iconfont" v-if="collect==true">&#xe60f;</i></span>
-      </div>
+      <!--<div class="head-right">-->
+        <!--&lt;!&ndash;未收藏&ndash;&gt;-->
+        <!--<span><i class="iconfont" v-if="collect==false" @click="addCollect">&#xe636;</i></span>-->
+        <!--&lt;!&ndash;收藏&ndash;&gt;-->
+        <!--<span><i class="iconfont" v-if="collect==true">&#xe60f;</i></span>-->
+      <!--</div>-->
 
 
     </header>
@@ -85,21 +85,20 @@
       this.TOKEN({
         token: getStore('token')
       });
-      this.collectArt()
+//      this.collectArt()
     },
     methods: {
       ...mapActions([
         'getOneArtInfo',
         'addNewReplies',
-        'collectArt'
+//        'collectArt'
       ]),
       ...mapMutations([
         'REPLIY_PARAMS',
         'TOKEN'
       ]),
-      addCollect(){
+//      addCollect(){},
 
-      },
       /**
        *  methods submit
        *  describe 提交回复
@@ -150,7 +149,6 @@
        */
       answer(info) {
         let self = this;
-        console.log(info);
         self.replyId = info.id;
         self.replyContent = '@' + info.author.loginname;
       },

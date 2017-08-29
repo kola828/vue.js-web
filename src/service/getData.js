@@ -76,15 +76,11 @@ if (process.env.NODE_ENV == 'development') {
 
 
   // 收藏主题
-  var collectArt = (data) =>axios({
-    method: 'POST',
-    url: '/v1/topic/collect',
-    data: data
-    //     {
-    //   accesstoken:token,
-    //   topic_id:'5987f2d4924ce0e86b968686'
-    // }
-  });
+  // var collectArt = (data) =>axios({
+  //   method: 'POST',
+  //   url: '/v1/topic/collect',
+  //   data: data
+  // });
 
 
 
@@ -93,4 +89,4 @@ if (process.env.NODE_ENV == 'development') {
 }
 
 
-export {articleInfo, oneArtInfo, addNewReplies,addNewArt,getUser,checkToken,getMsgCount,getMessages,collectArt}
+export {articleInfo, oneArtInfo, addNewReplies,addNewArt,getUser,checkToken,getMsgCount,getMessages}

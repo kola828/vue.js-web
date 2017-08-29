@@ -25,12 +25,12 @@
             </div>
           </cell>
         </router-link>
-        <router-link to="myCollect" class="my-list">
-          <cell title="我的收藏" is-link>
-            <div class="badge-value" slot="value">
-            </div>
-          </cell>
-        </router-link>
+        <!--<router-link to="myCollect" class="my-list">-->
+        <!--<cell title="我的收藏" is-link>-->
+        <!--<div class="badge-value" slot="value">-->
+        <!--</div>-->
+        <!--</cell>-->
+        <!--</router-link>-->
         <router-link to="myNew" class="my-list">
           <cell title="我的消息" is-link>
             <div class="badge-value" slot="value">
@@ -60,7 +60,7 @@
 
 <script>
   import footNav from '../../components/footer/foot.vue'
-  import {Badge, Group, Cell, Confirm} from 'vux'
+  import {Badge, Group, Cell, Confirm, Alert} from 'vux'
   import {mapState, mapActions, mapMutations} from 'vuex'
   import {getStore, removeStore} from '../../config/mUtils'
   import {getMsgCount} from '../../service/getData'
@@ -80,14 +80,26 @@
       ]),
     },
     mounted() {
-      this.NAME({
-        name: getStore('name')
-      });
-      this.TOKEN({
-        token: getStore('token')
-      });
-      this.getUser();
-      this.getLength();
+
+      let self=this;
+      if (getStore('token') === '' || getStore('token') === undefined || getStore('token') === null) {
+        this.$vux.alert.show({
+          title: '提示',
+          content: '您还没有登录，请先登录',
+          onHide() {
+            self.$router.push({path: '/login'})
+          }
+        })
+      } else {
+        this.NAME({
+          name: getStore('name')
+        });
+        this.TOKEN({
+          token: getStore('token')
+        });
+        this.getUser();
+        this.getLength();
+      }
     },
 
     methods: {
@@ -114,7 +126,7 @@
       }
     },
     components: {
-      footNav, Badge, Group, Cell, Confirm
+      footNav, Badge, Group, Cell, Confirm, Alert
     },
   }
 </script>

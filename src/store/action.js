@@ -19,7 +19,7 @@ import {
   COLLECT
 } from './mutation-types.js'
 
-import {getStore, getDate} from '../config/mUtils'
+import {getStore} from '../config/mUtils'
 
 export default {
   /**
@@ -114,17 +114,17 @@ export default {
         });
   },
 
-  async collectArt({commit, state}) {
-    await collectArt({
-      accesstoken:state.token,
-      topic_id:getStore('artId')
-    })
-        .then((response) => {
-          commit(COLLECT, response.data.data);
-        })
-        .catch((error) => {
-          console.log(error)
-        });
-  },
+  // async collectArt({commit, state}) {
+  //   await collectArt({
+  //     accesstoken:state.token,
+  //     topic_id:getStore('artId')
+  //   })
+  //       .then((response) => {
+  //         commit(COLLECT, response.data.data);
+  //       })
+  //       .catch((error) => {
+  //         console.log(error)
+  //       });
+  // },
 
 }

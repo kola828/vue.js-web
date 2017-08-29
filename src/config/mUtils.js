@@ -277,7 +277,7 @@ export const animate = (element, target, duration = 400, mode = 'ease-out', call
 
 
 /**
- * @description 获取url参数
+ * 获取url参数
  * @param name {string}
  * @method getQueryString
  * @returns {string}

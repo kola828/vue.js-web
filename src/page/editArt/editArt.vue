@@ -57,7 +57,16 @@
       }
     },
     mounted() {
-
+      let self = this;
+      if (getStore('token') === '' || getStore('token') === undefined || getStore('token') === null) {
+        this.$vux.alert.show({
+          title: '提示',
+          content: '您还没有登录，请先登录',
+          onHide() {
+            self.$router.push({path: '/login'})
+          }
+        })
+      }
     },
     methods: {
       ...mapActions([
