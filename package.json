@@ -1,8 +1,8 @@
 {
-  "name": "elm",
+  "name": "vue.js",
   "version": "1.0.1",
-  "description": "vue2-elm",
-  "author": "cangdu <1264889788@qq.com>",
+  "description": "vue.js",
+  "author": "mwz",
   "private": true,
   "license": "MIT",
   "scripts": {
