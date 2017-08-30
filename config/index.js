@@ -9,10 +9,10 @@ module.exports = {
         env: {
             NODE_ENV: '"production"'
         },
-        index: path.resolve(__dirname, '../elm/index.html'), //指定到你的后台程序生成的文件
-        assetsRoot: path.resolve(__dirname, '../elm'),   //指向包含应用程序的所有静态资产的根目录
+        index: path.resolve(__dirname, '../vue/index.html'), //指定到你的后台程序生成的文件
+        assetsRoot: path.resolve(__dirname, '../vue'),   //指向包含应用程序的所有静态资产的根目录
         assetsSubDirectory: 'static',   //被webpack编译处理过的资源文件都会在这个build.assetsRoot目录下，所以它不可以混有其它可能在build.assetsRoot里面有的文件
-        assetsPublicPath: '/elm/',      //资源的根目录
+        assetsPublicPath: '/vue/',      //资源的根目录
         productionSourceMap: true,   //在构建生产环境版本时是否开启source map
         // Surge or Netlify already gzip all static assets for you.
         // Before setting to `true`, make sure to:

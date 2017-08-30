@@ -46,11 +46,11 @@ if (context.length) {
 }
 
 server.use(proxyMiddleware('/payapi', {
-    target: 'https://pay.ele.me',
+    target: 'https://www.vue-js.com',
     changeOrigin: true,
 }))
-server.use(proxyMiddleware('/m.ele.me@json', {
-    target: 'https://crayfish.elemecdn.com',
+server.use(proxyMiddleware(' ', {
+    target: 'https://www.vue-js.com',
     changeOrigin: true,
 }))
 
