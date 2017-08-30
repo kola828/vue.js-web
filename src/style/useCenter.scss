@@ -1,3 +1,4 @@
+@import "mixin";
 #app {
   .container-big {
     .user-info {
@@ -59,7 +60,7 @@
       font-size: 0.8rem;
       color: white;
       text-align: center;
-      background: green;
+      background: $green;
       border-radius: 4px;
     }
   }

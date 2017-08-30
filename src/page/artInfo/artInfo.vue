@@ -1,21 +1,19 @@
 <template>
   <div>
-    <header id='nav-top'>
+    <!--<header id='nav-top'>-->
 
-      <div class="head-left" onclick="window.history.go(-1)">
-        <i class="iconfont">&#xe615;</i>
-        <span>返回</span>
-      </div>
-
-      <!--<div class="head-right">-->
-        <!--&lt;!&ndash;未收藏&ndash;&gt;-->
-        <!--<span><i class="iconfont" v-if="collect==false" @click="addCollect">&#xe636;</i></span>-->
-        <!--&lt;!&ndash;收藏&ndash;&gt;-->
-        <!--<span><i class="iconfont" v-if="collect==true">&#xe60f;</i></span>-->
+      <!--<div class="head-left" onclick="window.history.go(-1)">-->
+        <!--<i class="iconfont">&#xe615;</i>-->
+        <!--<span>返回</span>-->
       <!--</div>-->
-
-
-    </header>
+      <!--&lt;!&ndash;<div class="head-right">&ndash;&gt;-->
+        <!--&lt;!&ndash;&lt;!&ndash;未收藏&ndash;&gt;&ndash;&gt;-->
+        <!--&lt;!&ndash;<span><i class="iconfont" v-if="collect==false" @click="addCollect">&#xe636;</i></span>&ndash;&gt;-->
+        <!--&lt;!&ndash;&lt;!&ndash;收藏&ndash;&gt;&ndash;&gt;-->
+        <!--&lt;!&ndash;<span><i class="iconfont" v-if="collect==true">&#xe60f;</i></span>&ndash;&gt;-->
+      <!--&lt;!&ndash;</div>&ndash;&gt;-->
+    <!--</header>-->
+    <head-nav></head-nav>
     <div class="container">
       <div class="con-header">
         <div class="title">{{oneArtInfo.artTitle}}</div>
@@ -61,7 +59,7 @@
   import {getStore} from '../../config/mUtils.js'
   import {XTextarea, Alert} from 'vux'
   import {mapState, mapActions, mapMutations} from 'vuex'
-
+  import headNav from "../../components/header/headNav.vue";
   export default {
     data() {
       return {
@@ -155,7 +153,8 @@
     },
     components: {
       XTextarea,
-      Alert
+      Alert,
+      headNav
     },
   }
 </script>

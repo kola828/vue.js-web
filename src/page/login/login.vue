@@ -21,7 +21,7 @@
 </template>
 <script>
   import {mapState, mapActions, mapMutations} from 'vuex'
-  import {getUser,checkToken} from '../../service/getData'
+  import {getUser, checkToken} from '../../service/getData'
   import {setStore} from '../../config/mUtils.js'
   import {Alert} from 'vux'
 
@@ -44,34 +44,76 @@
         'NAME',
         'TOKEN'
       ]),
-      login() {
+      async login() {
         let self = this;
-        let name1='';
-        let name2='';
-        self.NAME({
-          name: self.myName
-        });
-        self.TOKEN({
-          token: self.myToken
-        });
-        getUser(self.myName).then(function (response) {
-          name1=response.data.data.loginname
-        });
-        checkToken({accesstoken:self.myToken}).then(function (response) {
-          name2=response.data.loginname;
-        });
-        if(name1===name2){
-          self.$router.push({path: '/home'});
-          setStore('token',self.myToken);
-          setStore('name',self.myName)
-
-        }else {
-          console.log('dasda');
+        if (self.myName === '' || self.myName === undefined || self.myName === null) {
           self.$vux.alert.show({
             title: '提示',
-            content: '用户名与checkToken不匹配请重新输入',
+            content: '请输入用户名',
           })
+        } else if (self.myToken === '' || self.myToken === undefined || self.myToken === null) {
+          self.$vux.alert.show({
+            title: '提示',
+            content: '请输入checkToken',
+          })
+        } else {
+
+          let name1 = '';
+          let name2 = '';
+          self.NAME({
+            name: self.myName
+          });
+          self.TOKEN({
+            token: self.myToken
+          });
+
+          await getUser(self.myName)
+              .then(function (response) {
+                name1 = response.data.data.loginname
+              })
+              .catch(function (error) {
+                name1 = null;
+              });
+          await checkToken({accesstoken: self.myToken})
+              .then(function (response) {
+                name2 = response.data.loginname;
+              })
+              .catch(function (error) {
+                name2 = null;
+              });
+
+          if (name1 === null) {
+            self.$vux.alert.show({
+              title: '提示',
+              content: '您输入的用户名不正确',
+              onHide(){
+                self.myName= '';
+              }
+            })
+          } else if (name2 === null) {
+            self.$vux.alert.show({
+              title: '提示',
+              content: '您输入的accessToken不正确',
+              onHide(){
+                self.myToken= '';
+              }
+            });
+          } else {
+            if (name1 === name2) {
+              self.$router.push({path: '/home'});
+              setStore('token', self.myToken);
+              setStore('name', self.myName)
+            } else {
+              self.$vux.alert.show({
+                title: '提示',
+                content: '用户名与checkToken不匹配请重新输入',
+              })
+            }
+          }
+
         }
+
+
       }
     },
     components: {

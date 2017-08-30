@@ -1,12 +1,13 @@
 <template>
 
       <div>
-            <header id='nav-top'>
-                  <div class="head-left" onclick="window.history.go(-1)">
-                        <i class="iconfont">&#xe615;</i>
-                        <span>返回</span>
-                  </div>
-            </header>
+        <!--<header id='nav-top'>-->
+        <!--<div class="head-left" onclick="window.history.go(-1)">-->
+        <!--<i class="iconfont">&#xe615;</i>-->
+        <!--<span>返回</span>-->
+        <!--</div>-->
+        <!--</header>-->
+            <head-nav></head-nav>
             <group class="main-list">
                   <cell @click.native='jumpInfo(key)' v-for="key in collect_topics" :title="key.title" is-link></cell>
             </group>
@@ -19,13 +20,14 @@
   import {Group, Cell} from 'vux'
   import {mapState, mapActions,mapMutations} from 'vuex'
   import {setStore,getStore} from '../../config/mUtils.js'
+  import headNav from "../../components/header/headNav.vue";
 
   export default {
     data() {
       return {}
     },
     components: {
-       Group, Cell
+       Group, Cell,headNav
     },
     computed: {
       ...mapState([

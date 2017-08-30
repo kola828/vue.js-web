@@ -1,12 +1,5 @@
-@mixin sm-button($bg,$color) {
-  border: 1px solid green;
-  border-radius: 3px;
-  font-size: 0.6rem;
-  color: $color;
-  background: $bg;
-  padding: 0 3px;
-  margin-right: 10px;
-}
+@import "mixin";
+
 
 .contain {
   .top-head {
@@ -22,7 +15,7 @@
       padding-bottom: 0.5rem;
       border-bottom: 1px solid lightgray;
       .vux-flexbox-item {
-        background: green;
+        background: $green;
         font-size: 0.7rem;
         padding: 0.1rem;
         border-radius: 4px;
@@ -58,7 +51,7 @@
         }
         .article-title {
           .top {
-            @include sm-button(green, white);
+            @include sm-button($green, white);
           }
           .test {
             @include sm-button(gray, white);

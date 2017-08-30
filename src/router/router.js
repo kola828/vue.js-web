@@ -18,7 +18,7 @@ export default [{
     //地址为空时跳转home页面
     {
       path: '',
-      redirect: '/login'
+      redirect: '/home'
     },
     //首页
     {

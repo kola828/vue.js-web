@@ -1,3 +1,5 @@
+@import "mixin";
+
 #app {
   overflow-y: auto;
   overflow-x: hidden;
@@ -13,30 +15,24 @@
 
     .head-left {
       display: inline-block;
-
       .iconfont {
         color: white;
       }
-
       span {
         color: white;
         font-size: 0.8rem;
       }
-
     }
     .head-right {
       margin-left: 2rem;
       display: inline-block;
-
       .iconfont {
         color: white;
       }
-
     }
   }
   .main-list {
     position: absolute;
-    //top: 2rem;
     top: 1rem;
     width: 100%;
     font-size: 0.8rem;
@@ -50,13 +46,11 @@
         line-height: 2rem;
         padding:0 5px;
         border-bottom: 1px lightgray solid;
-
       }
       li:nth-child(even)
       {
         background: #d8eee8;
       }
-
     }
   }
 }

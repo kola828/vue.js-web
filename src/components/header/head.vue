@@ -4,10 +4,10 @@
             <img src="../../images/vue.png">
         </div>
         <span class="logo-span">Vue.js</span>
-        <div class="head-select">
-            <input v-model="selectValue">
-            <i class="iconfont select">&#xe66f;</i>
-        </div>
+        <!--<div class="head-select">-->
+            <!--<input v-model="selectValue">-->
+            <!--<i class="iconfont select">&#xe66f;</i>-->
+        <!--</div>-->
     </header>
 </template>
 
@@ -23,7 +23,6 @@
             }
         },
         mounted(){
-            //获取用户信息
 
 
         },

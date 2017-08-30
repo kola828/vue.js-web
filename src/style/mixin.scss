@@ -1,6 +1,14 @@
-$blue: #3190e8;  
-$bc: #e4e4e4;
-$fc:#fff;
+$green:green;
+
+@mixin sm-button($bg,$color) {
+	border: 1px solid $green;
+	border-radius: 3px;
+	font-size: 0.6rem;
+	color: $color;
+	background: $bg;
+	padding: 0 3px;
+	margin-right: 10px;
+}
 
 // 背景图片地址和大小
 @mixin bis($url) { 

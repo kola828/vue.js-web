@@ -1,14 +1,15 @@
 <template>
 
   <div>
-    <header id='nav-top'>
-      <!--<router-link to="home">-->
-        <div class="head-left" onclick="window.history.go(-1)">
-          <i class="iconfont">&#xe615;</i>
-          <span>返回</span>
-        </div>
-      <!--</router-link>-->
-    </header>
+    <!--<header id='nav-top'>-->
+    <!--&lt;!&ndash;<router-link to="home">&ndash;&gt;-->
+    <!--<div class="head-left" onclick="window.history.go(-1)">-->
+    <!--<i class="iconfont">&#xe615;</i>-->
+    <!--<span>返回</span>-->
+    <!--</div>-->
+    <!--&lt;!&ndash;</router-link>&ndash;&gt;-->
+    <!--</header>-->
+    <head-nav></head-nav>
     <div class="container">
       <p>选择版块：</p>
       <flexbox :gutter="15">
@@ -25,27 +26,21 @@
           <div :class="['flex-demo',tab=='job' ? 'active':'']" @click="chooseTabs('job')">招聘</div>
         </flexbox-item>
       </flexbox>
-
       <group>
         <x-input placeholder="标题" :max="20" v-model="title"></x-input>
         <x-textarea :max="600" name="description" v-model="content" :height="400" placeholder="正文..."></x-textarea>
       </group>
-
       <div class="submit" @click="submit">发 布</div>
-
     </div>
-
-
   </div>
 
 </template>
 
 <script>
   import {XTextarea, Group, XInput, Flexbox, FlexboxItem, Alert} from 'vux'
-//  import {token} from "../../service/getData";
   import {mapState, mapActions, mapMutations} from 'vuex'
-
   import {getStore} from '../../config/mUtils'
+  import headNav from "../../components/header/headNav.vue";
 
   export default {
     data() {
@@ -53,7 +48,7 @@
         tab: '',
         title: '',
         content: '',
-        token:getStore('token')
+        token: getStore('token')
       }
     },
     mounted() {
@@ -94,14 +89,14 @@
           })
         } else {
           let params = {
-            accesstoken:self.token,
+            accesstoken: self.token,
             title: self.title,
             tab: self.tab,
             content: self.content
           };
 
           self.ADD_ART_PARAM({
-            params:params
+            params: params
           });
 
           self.addNewArt()
@@ -130,7 +125,8 @@
       XInput,
       Flexbox,
       FlexboxItem,
-      Alert
+      Alert,
+      headNav
     },
 
   }
