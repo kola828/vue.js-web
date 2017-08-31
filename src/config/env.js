@@ -17,7 +17,7 @@ if (process.env.NODE_ENV == 'development') {
 	baseUrl = 'https://www.vue-js.com';
 	routerMode = 'hash'
 }else{
-	baseUrl = 'https://www.vue-js.com';
+	baseUrl = 'https://www.vue-js.com/api';
 	routerMode = 'hash'
 }
 
