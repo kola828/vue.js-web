@@ -13,6 +13,15 @@ npm run dev
 
 访问 http://localhost:8080
 
+## 页面
+<!--https://github.com/kola828/vue.js-web/blob/master/src/images/vue.png-->
+![image](https://github.com/kola828/vue.js-web/blob/master/src/images/login.png)
+![image](https://github.com/kola828/vue.js-web/blob/master/src/images/index.png)
+![image](https://github.com/kola828/vue.js-web/blob/master/src/images/edit1.png)
+![image](https://github.com/kola828/vue.js-web/blob/master/src/images/add.png)
+![image](https://github.com/kola828/vue.js-web/blob/master/src/images/artinfo.png)
+![image](https://github.com/kola828/vue.js-web/blob/master/src/images/user.png)
+![image](https://github.com/kola828/vue.js-web/blob/master/src/images/join.png)
 ## 打包 
  npm run build
  

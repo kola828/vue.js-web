@@ -25,14 +25,14 @@ module.exports = {
     env: {
       NODE_ENV: '"development"'
     },
-    port: 8080,//运行页面测试端口
+    port: 8088,//运行页面测试端口
     assetsSubDirectory: 'static',//编译输出二级目录
     assetsPublicPath: '/', // 编译发布的根目录，可配置为资源服务器域名或 CDN 域名
     //proxyTable: {}, // 需要 proxyTable 代理的接口（可跨域）
     context: [ //代理路径
       '/v1',
     ],
-    proxypath: 'https://www.vue-js.com/api',
+    proxypath: 'https://www.vue-js.com',
     // CSS Sourcemaps off by default because relative paths are "buggy"
     // with this option, according to the CSS-Loader README
     // (https://github.com/webpack/css-loader#sourcemaps)

@@ -8,8 +8,10 @@
         <!--</div>-->
         <!--</header>-->
             <head-nav></head-nav>
+
             <group class="main-list">
-                  <cell @click.native='jumpInfo(key)' v-for="key in collect_topics" :title="key.title" is-link></cell>
+              dsgf
+                  <!--<cell @click.native='jumpInfo(key)' v-for="key in collect_topics" :title="key.title" is-link></cell>-->
             </group>
       </div>
 
@@ -36,10 +38,10 @@
 
     },
     mounted() {
-      this.NAME({
-        name: getStore('name')
-      });
-      this.getUser();
+//      this.NAME({
+//        name: getStore('name')
+//      });
+//      this.getUser();
     },
 
     methods: {

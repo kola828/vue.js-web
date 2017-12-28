@@ -3,22 +3,22 @@
     <div class="top-head">
       <head-nav :select-value="title"></head-nav>
       <flexbox>
-        <flexbox-item>
+        <flexbox-item :class="tab=='all'?'active':''">
           <div class="flex-demo" @click="chooseTabs('all')">全部</div>
         </flexbox-item>
-        <flexbox-item>
+        <flexbox-item :class="tab=='good'?'active':''">
           <div class="flex-demo" @click="chooseTabs('good')">精华</div>
         </flexbox-item>
-        <flexbox-item>
+        <flexbox-item :class="tab=='weex'?'active':''">
           <div class="flex-demo" @click="chooseTabs('weex')">weex</div>
         </flexbox-item>
-        <flexbox-item>
+        <flexbox-item :class="tab=='share'?'active':''">
           <div class="flex-demo" @click="chooseTabs('share')">分享</div>
         </flexbox-item>
-        <flexbox-item>
+        <flexbox-item :class="tab=='ask'?'active':''">
           <div class="flex-demo" @click="chooseTabs('ask')">问答</div>
         </flexbox-item>
-        <flexbox-item>
+        <flexbox-item :class="tab=='job'?'active':''">
           <div class="flex-demo" @click="chooseTabs('job')">招聘</div>
         </flexbox-item>
       </flexbox>
@@ -27,7 +27,6 @@
 
     <div id="wrapper">
       <div class="iscroll" id="iscroll">
-
         <div class="content-info" v-for="key in allArtList" @click="jumpInfo(key)">
           <div class="one-article">
             <div class="author-time"><span>作者：{{key.author.loginname}} </span>

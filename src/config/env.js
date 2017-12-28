@@ -14,7 +14,7 @@ let routerMode='';
 const imgBaseUrl = ' ';
 
 if (process.env.NODE_ENV == 'development') {
-	baseUrl = 'https://www.vue-js.com';
+	baseUrl = 'https://www.vue-js.com/api';
 	routerMode = 'hash'
 }else{
 	baseUrl = 'https://www.vue-js.com/api';

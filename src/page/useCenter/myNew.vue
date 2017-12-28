@@ -57,6 +57,8 @@
         let self = this;
         setStore('artId', info.topic.id);
         self.$router.push({path: '/artInfo'});
+
+
       }
 
     },

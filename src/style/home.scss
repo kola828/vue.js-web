@@ -12,16 +12,26 @@
       width: 98%;
       margin: 0 auto;
       margin-top: 7px;
-      padding-bottom: 0.5rem;
+      //padding-bottom: 0.5rem;
       border-bottom: 1px solid lightgray;
       .vux-flexbox-item {
-        background: $green;
         font-size: 0.7rem;
-        padding: 0.1rem;
-        border-radius: 4px;
+        padding: 0.1rem 0 0.4rem 0;
         text-align: center;
-        .flex-demo {
-          color: white;
+        color: black;
+        //background: $green;
+        //font-size: 0.7rem;
+        //padding: 0.1rem;
+        //border-radius: 4px;
+        //text-align: center;
+        //.flex-demo {
+          //color: white;
+        //}
+      }
+      .active{
+        border-bottom: 2px solid $green;
+        .flex-demo{
+          color: $green;
         }
       }
     }
